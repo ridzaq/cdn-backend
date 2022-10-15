@@ -1,0 +1,31 @@
+### POST
+POST http://localhost:3000/user HTTP/1.1
+content-type: application/json
+
+{
+    "username": "string",
+    "email": "string",
+    "phone": 1,
+    "skillsets": "code",
+    "hobby": "computers"
+}
+
+### PUT
+PUT http://localhost:3000/user/1 HTTP/1.1
+content-type: application/json
+
+{
+    "username": "string2",
+    "email": "string",
+    "phone": 1,
+    "skillsets": "code",
+    "hobby": "computers"
+}
+
+### Get
+GET http://localhost:3000/user
+content-type: application/json
+
+### DELETE
+DELETE http://localhost:3000/user/1
+content-type: application/json
