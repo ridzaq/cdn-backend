@@ -1,3 +1,4 @@
+import { ConfigModule } from '@nestjs/config';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
@@ -8,18 +9,25 @@ import { UsersModule } from './user/user.module';
 import { UserService } from './user/user.service';
 
 @Module({
-  imports: [ TypeOrmModule.forRoot({
+  imports: [ 
+    ConfigModule.forRoot(),
+    TypeOrmModule.forRoot({
     type: 'postgres',
-    host: 'localhost',
-    port: 5432,
-    username: 'postgres',
-    password: '123456',
+    url: process.env.DATABASE_URL,
+    ssl: {
+      rejectUnauthorized: false,
+    },
+    // host: 'localhost',
+    // port: 5432,
+    // username: 'postgres',
+    // password: '123456',
     database: 'cdn',
     entities: [User],
     synchronize: true,
     logging: true
   }),
-  UsersModule],
+  UsersModule
+],
   controllers: [AppController],
   providers: [AppService],
 })

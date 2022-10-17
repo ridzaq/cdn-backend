@@ -1,7 +1,7 @@
 export class CreateUserDto{
     username: string;
     email: string;
-    phone: number;
+    phone: string;
     skillsets: string[];
     hobby: string;
 }
